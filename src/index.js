@@ -1,10 +1,7 @@
-const characters = [
-  { name: 'мечник', health: 10 },
-  { name: 'маг', health: 100 },
-  { name: 'маг', health: 0 },
-  { name: 'лучник', health: 0 }
-];
+import './css/style.css';
+import './js/game.js';
+import { play } from './js/game.js';
 
-const alive = characters.filter(item => item.health > 0);
+console.log('Index module loaded');
 
-console.log(alive);
+play();
