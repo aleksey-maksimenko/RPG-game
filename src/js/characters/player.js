@@ -28,8 +28,7 @@ class Player {
     if (distance > this.weapon.range) {
       return 0;
     }
-    let resultDmg = (this.attack + weaponDamage) * this.getLuck() / distance;
-    return resultDmg;
+    return (this.attack + weaponDamage) * this.getLuck() / distance;
   }
 
   takeDamage(damage) {
@@ -80,14 +79,13 @@ class Player {
   }
   
   checkWeapon() {
-    if (!this.weapon.isBroken())
-      return;
-    if (this.weapon instanceof Arm) {
-      return; 
-    } else if (this.weapon instanceof Knife) {
-      console.log(`${this.name} теряет нож и остается с голыми руками`);
-      this.weapon = new Arm(); // заменяем нож на руки
-      return;
+    if (this.weapon.isBroken()) {
+      if (this.weapon instanceof Knife) {
+        console.log(`${this.name} теряет нож и остается с голыми руками`);
+        this.weapon = new Arm(); // заменяем нож на руки
+       } else { //сломалось основное
+      this.weapon = new Knife();
+      }
     }
   }
   

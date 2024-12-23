@@ -12,24 +12,15 @@ class Dwarf extends Warrior {
     this.weapon = new Axe();
     this.baseLife = this.life;
     this.baseMagic = this.magic;
+    this.timesDamaged = 0; //количество полученных ударов
   }
   takeDamage(damage) {
-    if (this.getLuck() > 0.5 && Math.floor(Math.random() * 6) == 0) {
+    this.timesDamaged++; //+1 удар
+    if (this.getLuck() > 0.5 && timesDamaged % 6 == 0) {
       damage /= 2; // уменьшение урона в два раза
     }
     super.takeDamage(damage);
   }
-  
-  checkWeapon() { 
-    if (!this.weapon.isBroken())
-      return;
-     if (this.weapon instanceof Axe) { 
-       console.log(`${this.name} теряет секиру и берёт нож`);
-       this.weapon = new Knife();
-     } else { 
-       super.checkWeapon(); 
-     } 
-   }
 }
 
 

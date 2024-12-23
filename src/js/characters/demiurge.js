@@ -21,17 +21,6 @@ class Demiurge extends Mage {
       return super.getDamage(distance);
     }
   }
-  
-  checkWeapon() {
-    if (!this.weapon.isBroken())
-      return;
-     if (this.weapon instanceof StormStaff) { 
-       console.log(`${this.name} теряет посох бури и берёт нож`);
-       this.weapon = new Knife();
-     } else { 
-       super.checkWeapon(); 
-     } 
-   }
 }
 
 export default Demiurge;
